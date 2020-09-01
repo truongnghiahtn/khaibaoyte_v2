@@ -1,0 +1,249 @@
+//
+//
+
+.Header {
+  height: 120px;
+  background-color: #1c6086;
+  .logo-header {
+    padding: 10px;
+    padding-left: 0;
+  }
+  .title-header {
+    color: white;
+    padding: 10px;
+    padding-top: 17px;
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+  }
+  .img-header {
+    position: relative;
+    left: 50px;
+    .img {
+    }
+  }
+
+  .img-header-left {
+    width: 40px;
+    height: 120px;
+    background: linear-gradient(0.25turn, #1c6086, #d0edfd);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: -15px;
+  }
+  .img-header-right {
+    width: 40px;
+    height: 120px;
+    background: linear-gradient(0.25turn, #d0edfd, #1c6086);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 95px;
+  }
+}
+
+// footer
+.footer {
+  height: 120px;
+  background: linear-gradient(#eceef8, #1c6086);
+  .footer-left {
+    margin-top: 30px;
+    display: flex;
+    padding: 10px;
+    color: white;
+    .footer-icon-right {
+      font-size: 40px;
+
+      width: 60px;
+      height: 60px;
+      border: 2px solid white;
+      text-align: center;
+      line-height: 50px;
+      padding-left: 10px;
+      border-radius: 50%;
+      .fa {
+        color: white;
+      }
+      margin-right: 30px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .footer-right {
+    color: white;
+    margin-top: 75px;
+  }
+}
+//
+//
+//Global
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+}
+body {
+  background-color: #eceef8 !important;
+}
+.wrapper {
+  max-width: 640px;
+  margin: 50px auto;
+}
+
+//Components
+.input-group {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 8px;
+  color: #202124;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 24px;
+  display: block !important;
+  &.input-err {
+    border-color: #d93025;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    color: #202124;
+    font-weight: 400;
+    margin-bottom: 23px;
+    span {
+      color: #d93025;
+    }
+  }
+  .err-text {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    line-height: 16px;
+    color: #d93025;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .d-none {
+    display: none;
+  }
+  i {
+    margin-right: 12px;
+    font-size: 15px;
+    line-height: 16px;
+    color: #d93025;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d93025;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1px;
+  }
+  .MuiFormControl-root {
+    width: 50%;
+  }
+}
+
+//PagetitleArea
+.page-title-area {
+  margin-top: 12px;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 24px;
+  padding-top: 22px;
+  position: relative;
+  &::after {
+    content: "";
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 10px;
+    left: -1px;
+    position: absolute;
+    top: -1px;
+    width: calc(100% + 2px);
+    background-color: rgb(63, 81, 181);
+  }
+}
+
+//content
+.tp-content {
+  position: relative;
+  .tp-cotent__title {
+    padding: 12px 24px;
+    color: white;
+    background-color: rgb(63, 81, 181);
+    width: 100%;
+    display: block;
+    transform: translateY(8px);
+    position: relative;
+    z-index: 1;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+}
+
+.img-qr {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 8px;
+  color: #202124;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 24px;
+  display: block !important;
+  img {
+    width: 100%;
+  }
+}
+a:hover {
+  color: black !important;
+}
+.chude-temp {
+  .MuiButtonBase-root,
+  .MuiInputBase-root {
+    width: 100%;
+  }
+}
+// pageSubmit
+.go-home {
+  margin-top: 70px;
+  margin-left: 20px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.Dasboard {
+  margin-top: 10px;
+  .content-Parent {
+    padding: 5px;
+  }
+  .content {
+    padding-top: 20px;
+    padding: 30px 20px;
+    margin: 0 auto;
+    min-height: 100px;
+    max-height: 450px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+}
