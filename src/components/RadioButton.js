@@ -5,21 +5,29 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 
 export default function RadioButton(props) {
-
   const [Value, setValue] = useState({ option: "" });
 
   // useEffect(() => {
   //   props.dataradio(Value)
   // }, [Value])
   const onchangeValues = (e) => {
-
     setValue({ option: e.target.value });
     props.dataradio({
-
       IDCauHoi: props.data.IDCauHoi,
       CauTraLoi: e.target.value,
-    })
-  }
+    });
+  };
+  const renderbutton = () => {
+    return props.data.NoiDung.map((item, index) => {
+      return (
+        <FormControlLabel
+          value={item.value}
+          control={<Radio color="primary" />}
+          label={item.label}
+        />
+      );
+    });
+  };
 
   return (
     <div className={`input-group ${false ? "input-err" : ""}`}>
@@ -28,9 +36,13 @@ export default function RadioButton(props) {
         {props.data.BatBuoc ? <span> *</span> : ""}
       </h4>
       <FormControl>
-        <RadioGroup aria-label="gender" value={Value.option} name="gender1" onChange={onchangeValues}>
-          <FormControlLabel value="Yes" control={<Radio color="primary" />} label="Có" />
-          <FormControlLabel value="No" control={<Radio color="primary" />} label="Không" />
+        <RadioGroup
+          aria-label="gender"
+          value={Value.option}
+          name="gender1"
+          onChange={onchangeValues}
+        >
+          {renderbutton()}
         </RadioGroup>
         {/* <FormHelperText className={false ? "err-text" : "d-none"}>
           <i className="fa fa-exclamation"></i> đây là câu hỏi bắt buộc

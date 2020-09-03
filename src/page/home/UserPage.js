@@ -20,7 +20,7 @@ export default class componentName extends Component {
         CauTraLoi_ChiTiet: [],
       },
       endpage: null,
-      socauhoi: 7,
+      socauhoi: 5,
     };
   }
   componentDidMount() {
@@ -29,6 +29,11 @@ export default class componentName extends Component {
   getCauHoi = () => {
     if (sessionStorage.getItem("template")) {
       var temPlateLocal = JSON.parse(sessionStorage.getItem("template"));
+      if (temPlateLocal.SoLgHienThi != null) {
+        this.setState({
+          socauhoi: temPlateLocal.SoLgHienThi,
+        });
+      }
       Axios({
         method: "GET",
         url: `http://localhost:50663/api/CauHoi/${temPlateLocal.IDTemplate}`,

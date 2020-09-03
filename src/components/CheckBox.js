@@ -9,8 +9,6 @@ export default function CheckBox(props) {
   const [err, setErr] = useState(false);
 
   useEffect(() => {
-    // chuyen du lieu sang dang chuoi
-
     props.datacheck({
       IDCauHoi: props.data.IDCauHoi,
       CauTraLoi: values.join(),
@@ -47,10 +45,10 @@ export default function CheckBox(props) {
       <FormControl error={true} onChange={onchangeFormControl}>
         {props.data.NoiDung.map((item, index) => (
           <FormControlLabel
-            value={item}
+            value={item.value}
             key={index}
             control={<Checkbox color="primary" />}
-            label={item}
+            label={item.label}
             // labelPlacement={item}
           />
         ))}
