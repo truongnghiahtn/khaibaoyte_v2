@@ -71,7 +71,7 @@ export default class cautraloiradio extends Component {
         <div className="content-Parent tp-content">
           <div className="tp-cotent__title">{this.props.data.TenCauHoi} ? </div>
           <div className="content">
-            <div className="iq-card ">
+            <div className="iq-cards ">
               <div className="iq-card-header d-flex justify-content-between">
                 <div className="iq-header-title">
                   <h4 className="card-title"> </h4>
@@ -80,7 +80,7 @@ export default class cautraloiradio extends Component {
               <div className="iq-card-body">
                 <div
                   id={"am-3dpie-chart" + this.props.dem}
-                  style={{ height: "300px" }}
+                  style={{ height: "290px" }}
                 ></div>
               </div>
             </div>

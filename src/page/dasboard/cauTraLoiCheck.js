@@ -20,7 +20,9 @@ export default class cauTraLoiCheck extends Component {
       x = this.props.dem;
     }
     let mangSL = this.props.data.NoiDung.map((item) => item.SoLg);
+
     let manglabels = this.props.data.NoiDung.map((item) => item.Option);
+    console.log(manglabels);
     let total = mangSL.reduce(
       (accumulator, currentValue) => accumulator + currentValue
     );
@@ -35,7 +37,7 @@ export default class cauTraLoiCheck extends Component {
         labels: manglabels,
         datasets: [
           {
-            label: "# of Votes",
+            // label: "# of Votes",
             data: mangSL,
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
@@ -76,7 +78,7 @@ export default class cauTraLoiCheck extends Component {
         <div className="content-Parent tp-content">
           <div className="tp-cotent__title">{this.props.data.TenCauHoi} </div>
           <div className="content">
-            <div className="iq-card ">
+            <div className="iq-cards ">
               <div className="iq-card-header d-flex justify-content-between">
                 <div className="iq-header-title">
                   <h4 className="card-title"> </h4>

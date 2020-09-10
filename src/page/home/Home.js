@@ -15,7 +15,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.getChuDe()
+    this.getChuDe();
   }
   getChuDe = () => {
     Axios({
@@ -23,15 +23,20 @@ class Home extends Component {
       url: "http://localhost:50663/api/ApiChuDe",
     })
       .then((result) => {
-        console.log(result.data)
-        this.setState({
-          chuDe: result.data
-        }, () => { console.log(this.state.chuDe) })
+        console.log(result.data);
+        this.setState(
+          {
+            chuDe: result.data,
+          },
+          () => {
+            console.log(this.state.chuDe);
+          }
+        );
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
   getTemplate = (id) => {
     Axios({
       method: "GET",
@@ -39,14 +44,13 @@ class Home extends Component {
     })
       .then((result) => {
         this.setState({
-          template: result.data
-        })
+          template: result.data,
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-  }
-
+  };
 
   renderChuDe = () => {
     return this.state.chuDe.map((item, index) => (
@@ -56,29 +60,26 @@ class Home extends Component {
     ));
   };
   renderTemplate = () => {
-    return this.state.template
-      .map((item, index) => (
-        <MenuItem key={index} value={item.IDTemplate}>
-          <em>{item.TenTemplate}</em>
-        </MenuItem>
-      ));
+    return this.state.template.map((item, index) => (
+      <MenuItem key={index} value={item.IDTemplate}>
+        <em>{item.TenTemplate}</em>
+      </MenuItem>
+    ));
   };
   onChangeChuDe = (e) => {
     this.setState({
       chuDeSelected: e.target.value,
       templateSelected: -1,
     });
-    this.getTemplate(e.target.value)
-
+    this.getTemplate(e.target.value);
   };
   onChangeTemplate = (e) => {
     this.setState({
       templateSelected: e.target.value,
     });
-
   };
   onNext = () => {
-    sessionStorage.setItem("idChuDe", this.state.chuDeSelected);
+    // sessionStorage.setItem("idChuDe", this.state.chuDeSelected);
     sessionStorage.setItem(
       "template",
       JSON.stringify(
@@ -87,7 +88,7 @@ class Home extends Component {
         )
       )
     );
-  }
+  };
   render() {
     let title = "Khai Báo Y Tế";
     let des =

@@ -87,7 +87,7 @@ export default class componentName extends Component {
     var hoten, msnv, email;
     if (sessionStorage.getItem("template")) {
       var temPlateLocal = JSON.parse(sessionStorage.getItem("template"));
-      var idChuDe = JSON.parse(sessionStorage.getItem("idChuDe"));
+      // var idChuDe = JSON.parse(sessionStorage.getItem("idChuDe"));
       data.map((item) => {
         if (item.name === "HoTen") {
           hoten = item.CauTraLoi;
@@ -107,7 +107,7 @@ export default class componentName extends Component {
             MSNV: msnv,
             Email: email,
             IDTemplate: temPlateLocal.IDTemplate,
-            IDChuDe: idChuDe,
+            IDChuDe: temPlateLocal.IDChuDe,
           },
         },
         () => {
