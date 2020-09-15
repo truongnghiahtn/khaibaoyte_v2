@@ -1,17 +1,16 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+// import Header from "../components/Header";
+// import Footer from "../components/Footer";
+import SideBar from "../components/newSideBar";
 
-const HomeLayout = (props) => {
+const AdminLayout = (props) => {
   return (
-    <div>
-      <Header />
-      <div className="wrapper_customer " style={{ minHeight: "50vh" }}>
-        {props.children}
+    <div className="MyDashBoard">
+      <div className="row">
+        <SideBar />
+        <div className="content-newDashBoard  ">{props.children}</div>
       </div>
-
-      <Footer />
     </div>
   );
 };
@@ -37,7 +36,7 @@ export default function HomeTemplate({ Component, ...props }) {
       {...props}
       render={(propsComponent) => {
         return (
-          <HomeLayout>
+          <AdminLayout>
             <Component {...propsComponent} />
             <div
               id="backtop"
@@ -47,7 +46,7 @@ export default function HomeTemplate({ Component, ...props }) {
             >
               <i className="fa fa-chevron-circle-up" aria-hidden="true"></i>
             </div>
-          </HomeLayout>
+          </AdminLayout>
         );
       }}
     />

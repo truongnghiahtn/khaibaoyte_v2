@@ -12,13 +12,21 @@ export default function InputText(props) {
   }, [Value, props]);
 
   const Onchange = (e) => {
+    let valid = false;
+    if (props.data.BatBuoc) {
+      valid = e.target.value === "" ? false : true;
+    } else {
+      valid = true;
+    }
     props.datatext({
       CauTraLoi: e.target.value,
       IDCauHoi: props.data.IDCauHoi,
+      inputValid: valid,
+      BatBuoc: props.data.BatBuoc,
     });
     setValue({
       text: e.target.value,
-      inputValid: e.target.value ? true : false,
+      inputValid: valid,
     });
   };
   //
@@ -28,7 +36,7 @@ export default function InputText(props) {
     <div className={`input-group ${!Value.inputValid ? "input-err" : ""}`}>
       <h4>
         {props.data.TieuDe}
-        {true ? <span> *</span> : ""}
+        {props.data.BatBuoc ? <span> *</span> : ""}
       </h4>
       <FormControl err={"false"}>
         <Input

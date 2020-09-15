@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from "react";
 import { Select, Input, MenuItem, Button } from "@material-ui/core";
-import PageTitleArea from "../../components/PageTitleArea";
+// import PageTitleArea from "../../components/PageTitleArea";
 import Axios from "axios";
-import { NavLink } from "react-router-dom";
-import Chude from "./chude";
-import Template from "./template";
+// import { NavLink } from "react-router-dom";
 import Cauhoi from "./cauHoi";
 import CauTraLoi from "./cauTraLoi";
 import CauTraLoiText from "./cauTraLoiText";
 import CauTraLoiRadio from "./cauTraLoiRadio";
 import CauTraLoiCheck from "./cauTraLoiCheck";
+import { connect } from "react-redux";
+import * as action from "../../redux/action/index";
 
-export default class dasboard extends Component {
+class dasboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,11 +24,15 @@ export default class dasboard extends Component {
       CauTraLoiText: [],
       CauTraLoiRadio: [],
       CauTraLoiCheckBox: [],
+      slchude: 0,
+      slTempalte: 0,
     };
   }
 
   componentDidMount() {
     this.getChuDe();
+    this.getall();
+    this.props.gettabdata("3");
   }
   getChuDe = () => {
     Axios({
@@ -38,6 +42,7 @@ export default class dasboard extends Component {
       .then((result) => {
         this.setState({
           chuDe: result.data,
+          slchude: result.data.length,
         });
       })
       .catch((err) => {
@@ -53,6 +58,27 @@ export default class dasboard extends Component {
         this.setState({
           template: result.data,
         });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  getall = () => {
+    Axios({
+      method: "GET",
+      url: `http://localhost:50663/api/ApiTemplate`,
+    })
+      .then((result) => {
+        this.setState(
+          {
+            all: result.data,
+          },
+          () => {
+            this.setState({
+              slTempalte: result.data.length,
+            });
+          }
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -121,7 +147,6 @@ export default class dasboard extends Component {
       url: `http://localhost:50663/api/ApiTemplate_checkbox/7`,
     })
       .then((result) => {
-        console.log(result.data);
         this.setState({
           CauTraLoiCheckBox: result.data,
         });
@@ -190,11 +215,55 @@ export default class dasboard extends Component {
   render() {
     return (
       <Fragment>
-        <div className="tp-content">
+        <div className="row">
+          <div className="col-8 " style={{ margin: "10px auto" }}>
+            <div className="row">
+              <div className="col-md-6 col-lg-6">
+                <div className="iq-card">
+                  <div className="iq-card-body iq-bg-primary rounded">
+                    <div className="d-flex align-items-center justify-content-between">
+                      <div className="rounded-circle iq-card-icon bg-primary">
+                        <i
+                          class="fa fa-id-card"
+                          aria-hidden="true"
+                          style={{ padding: "10px", lineHeight: "36px" }}
+                        ></i>
+                      </div>
+                      <div className="text-right">
+                        <h2 className="mb-0">{this.state.slchude}</h2>
+                        <h5 className>Chủ đề</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-6">
+                <div className="iq-card">
+                  <div className="iq-card-body iq-bg-warning rounded">
+                    <div className="d-flex align-items-center justify-content-between">
+                      <div className="rounded-circle iq-card-icon bg-warning">
+                        <i
+                          class="fa fa-id-card-o"
+                          aria-hidden="true"
+                          style={{ padding: "10px", lineHeight: "36px" }}
+                        ></i>
+                      </div>
+                      <div className="text-right">
+                        <h2 className="mb-0">{this.state.slTempalte}</h2>
+                        <h5 className>Template</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="tp-content col-8   " style={{ margin: "0 auto" }}>
           <div className="tp-cotent__title">Lựa chọn form</div>
           <div className="input-group chude-temp">
             <div className="row ">
-              <div className="col-6">
+              <div className="col-12">
                 <Select
                   input={<Input />}
                   value={this.state.chuDeSelected}
@@ -206,26 +275,30 @@ export default class dasboard extends Component {
                   {this.renderChuDe()}
                 </Select>
               </div>
-              <div className="col-6">
-                <Select
-                  input={<Input />}
-                  value={this.state.templateSelected}
-                  onChange={this.onChangeTemplate}
-                  disabled={this.state.chuDeSelected === -1 ? true : false}
-                >
-                  <MenuItem disabled value={-1}>
-                    <em>Vui lòng chọn Template</em>
-                  </MenuItem>
-                  {this.renderTemplate()}
-                </Select>
-              </div>
+              {this.state.chuDeSelected === -1 ? (
+                ""
+              ) : (
+                <div className="col-12" style={{ marginTop: "20px" }}>
+                  <Select
+                    input={<Input />}
+                    value={this.state.templateSelected}
+                    onChange={this.onChangeTemplate}
+                    disabled={this.state.chuDeSelected === -1 ? true : false}
+                  >
+                    <MenuItem disabled value={-1}>
+                      <em>Vui lòng chọn Template</em>
+                    </MenuItem>
+                    {this.renderTemplate()}
+                  </Select>
+                </div>
+              )}
             </div>
           </div>
         </div>
         <div className={this.state.templateSelected != -1 ? "vi" : "d-none"}>
           <div className="Dasboard row">
-            <Chude data={this.state.chuDe} />
-            <Template data={this.state.template} />
+            {/* <Chude data={this.state.chuDe} />
+            <Template data={this.state.template} /> */}
             <Cauhoi data={this.state.CauHoi} />
             <CauTraLoi data={this.state.CauTraLoi} title="Hoten" />
             <CauTraLoi data={this.state.CauTraLoi} title="MSNV" />
@@ -239,3 +312,12 @@ export default class dasboard extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    gettabdata: (data) => {
+      dispatch(action.getTab(data));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(dasboard);

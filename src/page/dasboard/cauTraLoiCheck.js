@@ -22,7 +22,6 @@ export default class cauTraLoiCheck extends Component {
     let mangSL = this.props.data.NoiDung.map((item) => item.SoLg);
 
     let manglabels = this.props.data.NoiDung.map((item) => item.Option);
-    console.log(manglabels);
     let total = mangSL.reduce(
       (accumulator, currentValue) => accumulator + currentValue
     );
@@ -74,7 +73,7 @@ export default class cauTraLoiCheck extends Component {
   };
   render() {
     return (
-      <div className="DS-content col-12">
+      <div className="DS-content  col-8" style={{ margin: "0 auto" }}>
         <div className="content-Parent tp-content">
           <div className="tp-cotent__title">{this.props.data.TenCauHoi} </div>
           <div className="content">

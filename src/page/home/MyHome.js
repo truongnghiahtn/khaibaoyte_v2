@@ -108,69 +108,6 @@ export default class myhome extends Component {
       <div>
         <div className="wrapper">
           <SideBar idchude={this.state.chuDeID} setchude={this.sideBarChuDe} />
-          <div className="iq-top-navbar">
-            <div className="iq-navbar-custom">
-              <div className="iq-sidebar-logo">
-                <div className="top-logo">
-                  <a href="index.html" className="logo">
-                    <img src="images/logo.png" className="img-fluid" />
-                    <span>XRay</span>
-                  </a>
-                </div>
-              </div>
-              <nav className="navbar navbar-expand-lg navbar-light p-0">
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <i className="fa fa-bars" aria-hidden="true"></i>
-                </button>
-                <div className="iq-menu-bt align-self-center">
-                  <div className="wrapper-menu">
-                    <div className="main-circle">
-                      <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                    </div>
-                    <div className="hover-circle">
-                      <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="collapse navbar-collapse"
-                  id="navbarSupportedContent"
-                >
-                  <ul className="navbar-nav ml-auto navbar-list">
-                    <li className="nav-item iq-full-screen">
-                      <a
-                        href="#"
-                        className="iq-waves-effect"
-                        id="btnFullscreen"
-                      >
-                        <i className="fa fa-arrows-alt" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a href="#" className="search-toggle iq-waves-effect">
-                        <i className="fa fa-bell" aria-hidden="true"></i>
-                        <span className="bg-danger dots" />
-                      </a>
-                    </li>
-                    <li className="nav-item dropdown">
-                      <a href="#" className="search-toggle iq-waves-effect">
-                        <i className="fa fa-envelope" aria-hidden="true"></i>
-                        <span className="bg-primary count-mail" />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-            </div>
-          </div>
           <div id="content-page" className="content-page">
             <div className="container-fluid">
               <div className="row">

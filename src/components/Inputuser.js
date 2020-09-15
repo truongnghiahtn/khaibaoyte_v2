@@ -7,11 +7,7 @@ export default function Inputuser(props) {
   const [errValue, seterrValue] = useState("");
   const Onchange = (e) => {
     let { name, value } = e.target;
-    props.datatext({
-      CauTraLoi: value,
-      IDCauHoi: props.data.idName,
-      name: name,
-    });
+
     let message = e.target.value === "" ? " Đây là một câu hỏi bắt buộc" : "";
     let Valid = false;
     switch (name) {
@@ -26,7 +22,6 @@ export default function Inputuser(props) {
         ) {
           Valid = false;
           message = "email không hợp lệ";
-          console.log(message);
         }
         break;
       case "HoTen":
@@ -41,7 +36,6 @@ export default function Inputuser(props) {
         ) {
           Valid = false;
           message = "Họ tên của bạn không hợp lệ";
-          console.log(message);
         }
         break;
       case "MSNV":
@@ -50,7 +44,12 @@ export default function Inputuser(props) {
       default:
         break;
     }
-
+    props.datatext({
+      CauTraLoi: value,
+      IDCauHoi: props.data.idName,
+      name: name,
+      inputValid: Valid,
+    });
     setValue({
       text: value,
       inputValid: Valid,

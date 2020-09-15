@@ -12,18 +12,31 @@ export default function CheckBox(props) {
     props.datacheck({
       IDCauHoi: props.data.IDCauHoi,
       CauTraLoi: values.join(),
+      inputValid: true,
+      BatBuoc: props.data.BatBuoc,
     });
-    //
+    console.log("useeffect");
     setErr(false);
   }, [values]);
   const helo = () => {
+    let valid = false;
+    if (props.data.BatBuoc) {
+      if (!values.length) {
+        setErr(true);
+        valid = false;
+      } else {
+        valid = true;
+      }
+    } else {
+      setErr(false);
+      valid = true;
+    }
     props.datacheck({
       IDCauHoi: props.data.IDCauHoi,
       CauTraLoi: values.join(),
+      inputValid: valid,
+      BatBuoc: props.data.BatBuoc,
     });
-    if (!values.length) {
-      setErr(true);
-    }
   };
   const onchangeFormControl = (e) => {
     let { value } = e.target;
@@ -41,7 +54,10 @@ export default function CheckBox(props) {
 
   return (
     <div className={`input-group ${err ? "input-err" : ""}`}>
-      <h4>{props.data.TieuDe}</h4>
+      <h4>
+        {props.data.TieuDe}
+        {props.data.BatBuoc ? <span> *</span> : ""}
+      </h4>
       <FormControl error={true} onChange={onchangeFormControl}>
         {props.data.NoiDung.map((item, index) => (
           <FormControlLabel

@@ -3,7 +3,7 @@
 @import "./typography";
 @import "./style";
 @import "./reposive";
-
+@import "./dashboard";
 .Header {
   height: 120px;
   background-color: #1c6086;
@@ -55,7 +55,7 @@
 
 // footer
 .footer {
-  height: 120px;
+  height: 123px;
   background: linear-gradient(#eceef8, #1c6086);
   .footer-left {
     margin-top: 30px;
@@ -175,10 +175,10 @@ body {
   h1 {
     font-size: 30px;
   }
-  &:hover {
-    background-color: rgba($color: #000000, $alpha: 0.1);
-    cursor: pointer;
-  }
+  // &:hover {
+  //   background-color: rgba($color: #000000, $alpha: 0.1);
+  //   cursor: pointer;
+  // }
   &::after {
     content: "";
     border-top-left-radius: 8px;
@@ -272,6 +272,15 @@ a:hover {
     max-height: 450px;
     overflow-y: auto;
     background-color: #fff;
+    .btn-xemthem {
+      color: #333;
+      font-size: 13px;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
   }
 }
 
@@ -282,5 +291,16 @@ a:hover {
     &:hover {
       background-color: rgba($color: #000000, $alpha: 0.1);
     }
+  }
+}
+#backtop {
+  position: relative;
+  .fa {
+    font-size: 35px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    z-index: 100;
   }
 }

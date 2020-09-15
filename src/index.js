@@ -6,10 +6,24 @@ import * as serviceWorker from "./serviceWorker";
 import "./scss/index.scss";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
 
+import { createStore, applyMiddleware, compose } from "redux";
+
+import { Provider } from "react-redux";
+
+import rootReducer from "./redux/reducers/rootReducer";
+
+import thunk from "redux-thunk";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
 

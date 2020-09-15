@@ -67,7 +67,7 @@ export default class cautraloiradio extends Component {
   };
   render() {
     return (
-      <div className="DS-content col-12">
+      <div className="DS-content col-8" style={{ margin: "0 auto" }}>
         <div className="content-Parent tp-content">
           <div className="tp-cotent__title">{this.props.data.TenCauHoi} ? </div>
           <div className="content">

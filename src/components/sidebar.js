@@ -21,26 +21,38 @@ export default class sidebar extends Component {
           <div className="iq-sidebar-logo d-flex justify-content-between">
             <a href="index.html">
               {/* <img src="images/logo-base.png" className="img-fluid" alt /> */}
-              <h4 style={{ color: "white" }}> Trang chủ </h4>
+              <h4 style={{ color: "white" }}> Home </h4>
             </a>
-            {/* <div className="iq-menu-bt-sidebar">
+            <div className="iq-menu-bt-sidebar">
               <div className="iq-menu-bt align-self-center">
                 <div className="wrapper-menu">
                   <div className="main-circle">
-                    <i className="ri-more-fill" />
+                    <i
+                      style={{ fontSize: "25px" }}
+                      class="fa fa-tasks"
+                      aria-hidden="true"
+                    ></i>
                   </div>
                   <div className="hover-circle">
-                    <i className="ri-more-2-fill" />
+                    <i
+                      style={{ fontSize: "25px" }}
+                      class="fa fa-tasks"
+                      aria-hidden="true"
+                    ></i>
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
           <div id="sidebar-scrollbar">
             <nav className="iq-sidebar-menu">
               <ul className="iq-menu">
                 <li className="iq-menu-title">
-                  <i className="fa fa-times" aria-hidden="true"></i>
+                  <i
+                    style={{ fontSize: "10px" }}
+                    className="fa fa-times"
+                    aria-hidden="true"
+                  ></i>
                   <span>Trang chủ</span>
                 </li>
                 <li>
@@ -50,7 +62,11 @@ export default class sidebar extends Component {
                   </a>
                 </li>
                 <li className="iq-menu-title">
-                  <i className="fa fa-times" aria-hidden="true"></i>
+                  <i
+                    style={{ fontSize: "10px" }}
+                    className="fa fa-times"
+                    aria-hidden="true"
+                  ></i>
                   <span>Quản lý</span>
                 </li>
                 <li

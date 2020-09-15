@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import InputUser from "./Inputuser";
 import { Button } from "@material-ui/core";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 export default class UserComponent extends Component {
   constructor(props) {
@@ -9,10 +9,12 @@ export default class UserComponent extends Component {
     this.state = {
       noiDungCauHoi: [],
       valid: false,
-      loaiCauHoi: [{ name: "HoTen", idName: 0, cauHoi: "Họ và tên" }, { name: "MSNV", idName: 1, cauHoi: "Mã số nhân viên" }, { name: "Email", idName: 2, cauHoi: "Địa chỉ Email" }]
-
-
-    }
+      loaiCauHoi: [
+        { name: "HoTen", idName: 0, cauHoi: "Họ và tên" },
+        { name: "MSNV", idName: 1, cauHoi: "Mã số nhân viên" },
+        { name: "Email", idName: 2, cauHoi: "Địa chỉ Email" },
+      ],
+    };
   }
 
   renderUser = () => {
@@ -21,78 +23,78 @@ export default class UserComponent extends Component {
     ));
   };
 
-
-
   text = (data) => {
-
     let noiDungCauHoiUpdate = this.state.noiDungCauHoi;
 
-    // 
+    //
     let index = this.state.noiDungCauHoi.findIndex((item) => {
-      return item.IDCauHoi == data.IDCauHoi
-    })
+      return item.IDCauHoi == data.IDCauHoi;
+    });
     if (index != -1) {
-      noiDungCauHoiUpdate[index] = data
-    }
-    else {
+      noiDungCauHoiUpdate[index] = data;
+    } else {
       // post
-      noiDungCauHoiUpdate = [...this.state.noiDungCauHoi, data]
+      noiDungCauHoiUpdate = [...this.state.noiDungCauHoi, data];
     }
-    this.setState({
-      noiDungCauHoi: noiDungCauHoiUpdate,
-    }, () => { this.checktext() })
-  }
+    this.setState(
+      {
+        noiDungCauHoi: noiDungCauHoiUpdate,
+      },
+      () => {
+        this.checktext();
+      }
+    );
+  };
+
   checktext = () => {
-
-    let valid
-    let index = this.state.noiDungCauHoi.findIndex(item => {
-      return item.CauTraLoi === "";
-    })
-
-
-
-    if (this.state.loaiCauHoi.length === this.state.noiDungCauHoi.length && index === -1) {
-      valid = true
-    }
-    else {
-      valid = false
+    let valid;
+    let index = this.state.noiDungCauHoi.findIndex((item) => {
+      return item.CauTraLoi === "" || item.inputValid === false;
+    });
+    if (
+      this.state.loaiCauHoi.length === this.state.noiDungCauHoi.length &&
+      index === -1
+    ) {
+      valid = true;
+    } else {
+      valid = false;
     }
     this.setState({
-      valid
-    })
-
-  }
-
+      valid,
+    });
+  };
 
   next = () => {
-    this.props.submitUser(this.state.noiDungCauHoi)
+    this.props.submitUser(this.state.noiDungCauHoi);
     this.props.next(2);
-  }
+  };
   submit = () => {
-    this.props.submitUser(this.state.noiDungCauHoi)
-  }
+    this.props.submitUser(this.state.noiDungCauHoi);
+  };
   render() {
     return (
       <div>
         {this.renderUser()}
-        {this.props.endpage === 1 ? <Button
-          variant="contained"
-          color="primary"
-          disabled={!this.state.valid}
-          onClick={this.submit}
-        >
-          submit
-      </Button> : <Button
+        {this.props.endpage === 1 ? (
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={!this.state.valid}
+            onClick={this.submit}
+          >
+            submit
+          </Button>
+        ) : (
+          <Button
             variant="contained"
             color="primary"
             disabled={!this.state.valid}
             onClick={this.next}
           >
             tiep
-      </Button>}
+          </Button>
+        )}
       </div>
-
     );
   }
 }
-

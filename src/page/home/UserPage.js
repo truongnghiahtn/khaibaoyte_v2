@@ -44,7 +44,6 @@ export default class componentName extends Component {
               Cauhoi: result.data,
             },
             () => {
-              console.log(this.state.Cauhoi);
               this.checkpage();
             }
           );
@@ -209,7 +208,6 @@ export default class componentName extends Component {
   };
 
   nextpage = (data) => {
-    console.log(data);
     this.setState({
       indexPage: data,
     });

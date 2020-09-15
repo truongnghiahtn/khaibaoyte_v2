@@ -42,7 +42,7 @@ export default class componentName extends Component {
         case "CheckBox":
           return <CheckBox key={index} datacheck={this.dataPost} data={item} />;
 
-        case "RadioBox":
+        case "RadioButton":
           return (
             <RadioButton key={index} dataradio={this.dataPost} data={item} />
           );
@@ -54,6 +54,7 @@ export default class componentName extends Component {
   };
 
   dataPost = (data) => {
+    console.log(data);
     let noiDungCauHoiUpdate = this.state.noiDungCauHoi;
     //
     let index = this.state.noiDungCauHoi.findIndex((item) => {
@@ -70,7 +71,6 @@ export default class componentName extends Component {
         noiDungCauHoi: noiDungCauHoiUpdate,
       },
       () => {
-        console.log(this.state.noiDungCauHoi);
         this.check();
       }
     );
@@ -78,13 +78,19 @@ export default class componentName extends Component {
 
   check = () => {
     let valid;
+    console.log(this.state.noiDungCauHoi);
     let index = this.state.noiDungCauHoi.findIndex((item) => {
-      return item.CauTraLoi === "";
+      return item.inputValid === false;
     });
-    if (
-      this.state.cauhoi.length === this.state.noiDungCauHoi.length &&
-      index === -1
-    ) {
+    let mangTrue = this.state.cauhoi.filter((item) => {
+      return item.BatBuoc === true;
+    });
+
+    let mangNoiDungCauHoi = this.state.noiDungCauHoi.filter((item) => {
+      return item.BatBuoc === true;
+    });
+    console.log(mangTrue.length, mangNoiDungCauHoi.length);
+    if (mangTrue.length === mangNoiDungCauHoi.length && index === -1) {
       valid = true;
     } else {
       valid = false;

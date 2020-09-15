@@ -1,14 +1,11 @@
 import UserPage from "./page/home/UserPage";
 // import Home from "./page/home/Home";
 import Submit from "./page/home/pageSubmit";
-import Dashboard from "./page/dasboard/Dasboard";
+import MyDashboard from "./page/dasboard/DashboardChuDe";
+import DashboardTemPlate from "./page/dasboard/DashboardTemplate";
+import DashboardThongKe from "./page/dasboard/Dasboard";
 
 const routesHome = [
-  // {
-  //   path: "/",
-  //   exact: true,
-  //   component: Home,
-  // },
   {
     path: `/user`,
     exact: false,
@@ -19,11 +16,26 @@ const routesHome = [
     exact: false,
     component: Submit,
   },
-  {
-    path: "/Dashboard",
-    exact: false,
-    component: Dashboard,
-  },
 ];
 
 export { routesHome };
+
+const routesAdmin = [
+  {
+    path: `/`,
+    exact: true,
+    component: MyDashboard,
+  },
+  {
+    path: `/admin/template`,
+    exact: false,
+    component: DashboardTemPlate,
+  },
+  {
+    path: `/admin/thongke`,
+    exact: false,
+    component: DashboardThongKe,
+  },
+];
+
+export { routesAdmin };

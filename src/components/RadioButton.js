@@ -6,15 +6,21 @@ import FormControl from "@material-ui/core/FormControl";
 
 export default function RadioButton(props) {
   const [Value, setValue] = useState({ option: "" });
-
-  // useEffect(() => {
-  //   props.dataradio(Value)
-  // }, [Value])
+  const [valid, setValid] = useState(!props.data.BatBuoc);
   const onchangeValues = (e) => {
     setValue({ option: e.target.value });
+    let valid = false;
+    if (props.data.BatBuoc) {
+      valid = e.target.value === "" ? false : true;
+    } else {
+      valid = true;
+    }
+
     props.dataradio({
       IDCauHoi: props.data.IDCauHoi,
       CauTraLoi: e.target.value,
+      inputValid: valid,
+      BatBuoc: props.data.BatBuoc,
     });
   };
   const renderbutton = () => {
