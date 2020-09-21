@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 class mydashboard extends Component {
   componentDidMount() {
     this.props.gettabdata("2");
+    this.props.getTemplate();
   }
   onnext = (data) => {
     sessionStorage.setItem("template", JSON.stringify(data));
@@ -15,16 +16,33 @@ class mydashboard extends Component {
       return (
         <NavLink
           to="/user"
-          className="col-4"
+          className="card col-12 col-sm-6 col-md-4 mt-3"
           onClick={() => {
             this.onnext(item);
           }}
         >
-          <div
-            dangerouslySetInnerHTML={{
-              __html: item.Content,
-            }}
-          ></div>
+          <div className="content-card">
+            <div className="card-body">
+              <h4
+                className="card-title"
+                style={{
+                  color: "white",
+                  fontSize: "20px",
+                  textAlign: "center",
+                  marginTop: "20px",
+                }}
+              >
+                {item.TenTemplate}
+              </h4>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div
+              className="img-cover"
+              style={{
+                backgroundImage: `url("../asset/img/background_${key}.jpg") `,
+              }}
+            ></div>
+          </div>
         </NavLink>
       );
     });
@@ -48,6 +66,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     gettabdata: (data) => {
       dispatch(action.getTab(data));
+    },
+    getTemplate: () => {
+      dispatch(action.actGetListTemplate());
     },
   };
 };

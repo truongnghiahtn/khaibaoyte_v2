@@ -3,13 +3,17 @@ import { Route, Redirect } from "react-router-dom";
 // import Header from "../components/Header";
 // import Footer from "../components/Footer";
 import SideBar from "../components/newSideBar";
+import Header from "../components/headerAdmin";
 
 const AdminLayout = (props) => {
   return (
     <div className="MyDashBoard">
+      <Header />
       <div className="row">
         <SideBar />
-        <div className="content-newDashBoard  ">{props.children}</div>
+        <div className="content-newDashBoard  " id="content-dashboard">
+          {props.children}
+        </div>
       </div>
     </div>
   );

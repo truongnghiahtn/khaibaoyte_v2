@@ -1,17 +1,19 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { NavLink } from "react-router-dom";
+import Header from "../components/headerAdmin";
+import SideBar from "../components/newSideBar";
 
 const HomeLayout = (props) => {
   return (
-    <div>
+    <div className="MyDashBoard">
       <Header />
-      <div className="wrapper_customer " style={{ minHeight: "50vh" }}>
-        {props.children}
+      <div className="row">
+        <SideBar />
+        <div className="wrapper_customer  " style={{ minHeight: "50vh" }}>
+          {props.children}
+        </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

@@ -37,26 +37,33 @@ class mydashboard extends Component {
       return (
         <NavLink
           to="/admin/template"
-          className="card col-4"
+          className="card col-12 col-md-4 mt-3"
           style={{
             textAlign: "center",
           }}
         >
           <div
             className="content-card"
-            style={{
-              border: "1px solid black",
-              cursor: "pointer",
-              borderRadius: "5px",
-            }}
             onClick={() => {
               this.getTab(item);
             }}
           >
             <div className="card-body">
-              <h4 className="card-title">{item.TenChuDe}</h4>
+              <h4
+                className="card-title"
+                style={{ color: "white", fontSize: "25px", fontWeight: "bold" }}
+              >
+                {item.TenChuDe}
+              </h4>
               <p className="card-text">{item.MoTa}</p>
+              <i class="fa fa-star" aria-hidden="true"></i>
             </div>
+            <div
+              className="img-cover"
+              style={{
+                backgroundImage: `url("./asset/img/background_${key}.jpg") `,
+              }}
+            ></div>
           </div>
         </NavLink>
       );

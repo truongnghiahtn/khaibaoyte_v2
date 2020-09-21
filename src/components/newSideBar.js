@@ -16,11 +16,20 @@ class newsidebar extends Component {
     }
     this.props.getTab(data);
   };
+  thongke = () => {
+    this.props.getTab("3");
+    const data = {
+      IDChuDe: "all",
+      IDTemplate: "all",
+    };
+    console.log(data);
+    this.props.getselect(data);
+  };
 
   render() {
     return (
-      <nav className="main-menu ">
-        <ul>
+      <nav className="main-menu " id="Main-menu">
+        <ul className="listMennu">
           <li
             className={
               this.props.tab === "1" ? "has-subnav active" : "has-subnav"
@@ -31,7 +40,9 @@ class newsidebar extends Component {
           >
             <NavLink to="/">
               <i className="fa fa-home fa-2x" />
-              <span className="nav-text">Chủ đề</span>
+              <span style={{ width: "76%" }} className="nav-text">
+                Chủ đề
+              </span>
             </NavLink>
           </li>
           <li
@@ -51,9 +62,7 @@ class newsidebar extends Component {
             className={
               this.props.tab === "3" ? "has-subnav active" : "has-subnav"
             }
-            onClick={() => {
-              this.ActionTab("3");
-            }}
+            onClick={this.thongke}
           >
             <NavLink to="/admin/thongke">
               <i className="fa fa-list fa-2x" />
@@ -84,26 +93,6 @@ class newsidebar extends Component {
               <span className="nav-text">Tables</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i className="fa fa-map-marker fa-2x" />
-              <span className="nav-text">Maps</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fa fa-info fa-2x" />
-              <span className="nav-text">Documentation</span>
-            </a>
-          </li>
-        </ul>
-        <ul className="logout">
-          <li>
-            <a href="#">
-              <i className="fa fa-power-off fa-2x" />
-              <span className="nav-text">Logout</span>
-            </a>
-          </li>
         </ul>
       </nav>
     );
@@ -121,6 +110,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getTab: (data) => {
       dispatch(action.getTab(data));
+    },
+    getselect: (data) => {
+      dispatch(action.getSelect(data));
     },
   };
 };

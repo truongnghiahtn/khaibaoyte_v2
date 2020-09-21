@@ -6,7 +6,6 @@ import AdminTemplate from "./templates/AdminTemplate";
 import PageNotFound from "./page/pageNotFound";
 import { routesHome } from "./routes";
 import { routesAdmin } from "./routes";
-import MyHome from "../src/page/home/MyHome";
 
 const showMenusHome = (routes) => {
   if (routes && routes.length > 0) {
@@ -40,7 +39,6 @@ function App() {
         <Switch>
           {showMenusAdmin(routesAdmin)}
           {showMenusHome(routesHome)}
-          <Route path="/admin" exact={false} component={MyHome} />
           <Route path="" exact={false} component={PageNotFound} />
         </Switch>
       </div>

@@ -45,3 +45,11 @@ export const getTab = (data) => {
     });
   };
 };
+export const getSelect = (data) => {
+  return (dispatch) => {
+    dispatch({
+      type: Actiontype.ACTION_SELECT,
+      Select: data,
+    });
+  };
+};

@@ -7,14 +7,14 @@ import DashboardThongKe from "./page/dasboard/Dasboard";
 
 const routesHome = [
   {
-    path: `/user`,
-    exact: false,
-    component: UserPage,
-  },
-  {
     path: "/Submit",
     exact: false,
     component: Submit,
+  },
+  {
+    path: `/user`,
+    exact: false,
+    component: UserPage,
   },
 ];
 

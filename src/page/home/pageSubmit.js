@@ -4,6 +4,14 @@ import { connect } from "react-redux";
 import * as action from "../../redux/action/index";
 
 class pagesubmit extends Component {
+  thongke = () => {
+    this.props.gettabdata("3");
+    if (sessionStorage.getItem("template")) {
+      var temPlateLocal = JSON.parse(sessionStorage.getItem("template"));
+      this.props.getselect(temPlateLocal);
+      console.log(temPlateLocal);
+    }
+  };
   render() {
     return (
       <div className="page-title-area page-title-v2" style={{ height: 270 }}>
@@ -24,9 +32,7 @@ class pagesubmit extends Component {
           <NavLink
             className="go-home"
             to="/admin/thongke"
-            onClick={() => {
-              this.props.gettabdata("3");
-            }}
+            onClick={this.thongke}
           >
             {" "}
             Xem chi tiết gửi phản hồi
@@ -40,6 +46,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     gettabdata: (data) => {
       dispatch(action.getTab(data));
+    },
+    getselect: (data) => {
+      dispatch(action.getSelect(data));
     },
   };
 };

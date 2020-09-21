@@ -33,6 +33,22 @@ class dasboard extends Component {
     this.getChuDe();
     this.getall();
     this.props.gettabdata("3");
+
+    if (this.props.chuDe !== "all") {
+      this.setState(
+        {
+          chuDeSelected: this.props.chuDe,
+          templateSelected: this.props.temPlate,
+        },
+        () => {
+          this.getCauHoi(this.props.temPlate);
+          this.getCauTraLoi(this.props.temPlate);
+          this.getCauTraLoiText(this.props.temPlate);
+          this.getCauTraLoiRadio(this.props.temPlate);
+          this.getCauTraLoiCheckBox(this.props.temPlate);
+        }
+      );
+    }
   }
   getChuDe = () => {
     Axios({
@@ -72,6 +88,7 @@ class dasboard extends Component {
         this.setState(
           {
             all: result.data,
+            template: result.data,
           },
           () => {
             this.setState({
@@ -220,18 +237,21 @@ class dasboard extends Component {
             <div className="row">
               <div className="col-md-6 col-lg-6">
                 <div className="iq-card">
-                  <div className="iq-card-body iq-bg-primary rounded">
+                  <div
+                    className="iq-card-body iq-bg-primary rounded"
+                    style={{ borderRadius: "1px" }}
+                  >
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="rounded-circle iq-card-icon bg-primary">
                         <i
-                          class="fa fa-id-card"
+                          className="fa fa-id-card"
                           aria-hidden="true"
                           style={{ padding: "10px", lineHeight: "36px" }}
                         ></i>
                       </div>
                       <div className="text-right">
                         <h2 className="mb-0">{this.state.slchude}</h2>
-                        <h5 className>Chủ đề</h5>
+                        <h5>Chủ đề</h5>
                       </div>
                     </div>
                   </div>
@@ -243,14 +263,14 @@ class dasboard extends Component {
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="rounded-circle iq-card-icon bg-warning">
                         <i
-                          class="fa fa-id-card-o"
+                          className="fa fa-id-card-o"
                           aria-hidden="true"
                           style={{ padding: "10px", lineHeight: "36px" }}
                         ></i>
                       </div>
                       <div className="text-right">
                         <h2 className="mb-0">{this.state.slTempalte}</h2>
-                        <h5 className>Template</h5>
+                        <h5>Template</h5>
                       </div>
                     </div>
                   </div>
@@ -313,6 +333,12 @@ class dasboard extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    temPlate: state.deMoReducer.template,
+    chuDe: state.deMoReducer.chude,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     gettabdata: (data) => {
@@ -320,4 +346,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-export default connect(null, mapDispatchToProps)(dasboard);
+export default connect(mapStateToProps, mapDispatchToProps)(dasboard);
